@@ -56,6 +56,15 @@
           animation-delay: 120ms;
         }
       }
+      #modal-movil::backdrop {
+        background: rgb(2 6 23 / 0.72);
+        backdrop-filter: blur(3px);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        #modal-movil[open] {
+          animation: entrar 180ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+        }
+      }
       @keyframes entrar {
         from {
           opacity: 0;
@@ -109,7 +118,7 @@
 
             <div class="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
-                href="https://github.com/kenymtz/contable-web/releases/download/v1.0.1/Contable_1.0.1_x64-setup.exe"
+                data-descarga href="https://github.com/kenymtz/contable-web/releases/download/v1.0.1/Contable_1.0.1_x64-setup.exe"
                 class="inline-flex items-center justify-center gap-2 rounded-xl bg-esmeralda px-6 py-3.5 text-base font-semibold text-fondo shadow-lg shadow-esmeralda/20 transition hover:bg-esmeralda-claro focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda-claro focus-visible:ring-offset-2 focus-visible:ring-offset-fondo"
               >
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -293,7 +302,7 @@
                   <td class="px-3 py-5 sm:px-5"></td>
                   <td class="px-3 py-5 sm:px-5">
                     <a
-                      href="https://github.com/kenymtz/contable-web/releases/download/v1.0.1/Contable_1.0.1_x64-setup.exe"
+                      data-descarga href="https://github.com/kenymtz/contable-web/releases/download/v1.0.1/Contable_1.0.1_x64-setup.exe"
                       class="inline-flex w-full items-center justify-center rounded-lg border border-slate-700 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-esmeralda/60 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda-claro"
                       >Descargar demo</a
                     >
@@ -339,7 +348,7 @@
         <div>
           <h2 class="text-sm font-semibold text-white">Enlaces</h2>
           <ul class="mt-4 space-y-2 text-sm">
-            <li><a class="text-slate-400 hover:text-white" href="https://github.com/kenymtz/contable-web/releases/download/v1.0.1/Contable_1.0.1_x64-setup.exe">Descargar demo</a></li>
+            <li><a class="text-slate-400 hover:text-white" data-descarga href="https://github.com/kenymtz/contable-web/releases/download/v1.0.1/Contable_1.0.1_x64-setup.exe">Descargar demo</a></li>
             <li><a class="text-slate-400 hover:text-white" href="https://opsforge2.gumroad.com/l/contable">Comprar licencia Pro</a></li>
             <li><a class="text-slate-400 hover:text-white" href="https://github.com/kenymtz/contable-web/releases">Versiones</a></li>
           </ul>
@@ -349,5 +358,141 @@
         <p class="mx-auto max-w-6xl px-4 py-5 text-xs text-slate-500 sm:px-6">© 2026 Contable. Todos los derechos reservados.</p>
       </div>
     </footer>
+    <!-- Desde un celular el instalador no sirve: se ofrece mandarse el link a la PC. -->
+    <dialog
+      id="modal-movil"
+      aria-labelledby="modal-movil-titulo"
+      aria-describedby="modal-movil-texto"
+      class="w-[calc(100%-2rem)] max-w-md rounded-2xl border border-slate-800 bg-[#0B1222] p-0 text-slate-200 shadow-2xl shadow-black/60"
+    >
+      <div class="relative p-6 sm:p-7">
+        <button
+          type="button"
+          data-cerrar-modal
+          class="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-lg text-slate-400 transition hover:bg-slate-800 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda-claro"
+          aria-label="Cerrar"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+        </button>
+
+        <span class="grid h-12 w-12 place-items-center rounded-xl bg-esmeralda/10 text-esmeralda-claro">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="12.5" rx="2" /><path d="M8 20.5h8M12 16.5v4" /></svg>
+        </span>
+        <h2 id="modal-movil-titulo" class="mt-5 pr-8 text-xl font-bold tracking-tight text-white">Descargalo en tu PC</h2>
+        <p id="modal-movil-texto" class="mt-2 leading-relaxed text-slate-400">
+          Contable 1.0 es una aplicación para Windows 10/11 (64 bits), así que no funciona en el celular. Mandate el link
+          y descargalo desde tu computadora.
+        </p>
+
+        <div class="mt-6 grid gap-3">
+          <a
+            id="modal-movil-whatsapp"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-esmeralda px-5 py-3.5 text-base font-semibold text-fondo shadow-lg shadow-esmeralda/20 transition hover:bg-esmeralda-claro focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda-claro focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1222]"
+          >
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2a9.8 9.8 0 0 0-8.4 14.8L2.2 21.8l4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.1 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.6 2.6 0 0 0-.8 1.9 4.5 4.5 0 0 0 .9 2.4 10.3 10.3 0 0 0 4 3.5c1.5.6 2 .7 2.8.6.4-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.1-.1Z" /></svg>
+            Enviarme por WhatsApp
+          </a>
+          <div class="grid grid-cols-2 gap-3">
+            <a
+              id="modal-movil-mail"
+              href="#"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800/40 px-3 py-3 text-sm font-semibold text-white transition hover:border-esmeralda/60 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda-claro"
+            >
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="m4 7 8 6 8-6" /></svg>
+              Por mail
+            </a>
+            <button
+              id="modal-movil-copiar"
+              type="button"
+              class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800/40 px-3 py-3 text-sm font-semibold text-white transition hover:border-esmeralda/60 hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-esmeralda-claro"
+            >
+              <svg data-icono="copiar" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5" /><path d="M16 8V6.5A2.5 2.5 0 0 0 13.5 4h-7A2.5 2.5 0 0 0 4 6.5v7A2.5 2.5 0 0 0 6.5 16H8" /></svg>
+              <svg data-icono="copiado" class="hidden h-4 w-4 text-esmeralda-claro" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5.5 5.5L20 6.5" /></svg>
+              <span data-texto>Copiar link</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mt-5 rounded-xl border border-slate-800 bg-fondo px-4 py-3">
+          <p class="text-[11px] font-medium uppercase tracking-wider text-slate-500">Link de descarga</p>
+          <p id="modal-movil-url" class="mt-1 select-all break-all font-mono text-sm text-esmeralda-claro"></p>
+        </div>
+        <p id="modal-movil-estado" class="sr-only" aria-live="polite"></p>
+      </div>
+    </dialog>
+
+    <script>
+      (() => {
+        const URL_LANDING = "https://kenymtz.github.io/contable-web/";
+        const MENSAJE = `Descargar Contable 1.0 para Windows desde la PC: ${URL_LANDING}`;
+        const modal = document.getElementById("modal-movil");
+        const copiar = document.getElementById("modal-movil-copiar");
+        const estado = document.getElementById("modal-movil-estado");
+
+        document.getElementById("modal-movil-url").textContent = URL_LANDING;
+        document.getElementById("modal-movil-whatsapp").href = `https://wa.me/?text=${encodeURIComponent(MENSAJE)}`;
+        document.getElementById("modal-movil-mail").href =
+          `mailto:?subject=${encodeURIComponent("Contable 1.0: descargar en la PC")}&body=${encodeURIComponent(MENSAJE)}`;
+
+        /** El instalador es solo para Windows: celulares y tablets (iPadOS se presenta como Mac con pantalla táctil). */
+        function esMovil() {
+          if (navigator.userAgentData?.mobile === true) return true;
+          const agente = navigator.userAgent;
+          if (/Android|iPhone|iPad|iPod|Mobile|Windows Phone|IEMobile|Opera Mini/i.test(agente)) return true;
+          return /Macintosh/.test(agente) && navigator.maxTouchPoints > 1;
+        }
+
+        document.querySelectorAll("a[data-descarga]").forEach((enlace) => {
+          enlace.addEventListener("click", (evento) => {
+            if (!esMovil()) return;
+            evento.preventDefault();
+            modal.showModal();
+          });
+        });
+
+        modal.querySelector("[data-cerrar-modal]").addEventListener("click", () => modal.close());
+        // Un clic directo sobre el <dialog> (no sobre su contenido) cae en el fondo.
+        modal.addEventListener("click", (evento) => {
+          if (evento.target === modal) modal.close();
+        });
+
+        async function copiarTexto(texto) {
+          try {
+            await navigator.clipboard.writeText(texto);
+            return true;
+          } catch {
+            const area = document.createElement("textarea");
+            area.value = texto;
+            area.setAttribute("readonly", "");
+            area.style.cssText = "position:fixed;opacity:0";
+            modal.append(area);
+            area.select();
+            const ok = document.execCommand("copy");
+            area.remove();
+            return ok;
+          }
+        }
+
+        let temporizador;
+        copiar.addEventListener("click", async () => {
+          const ok = await copiarTexto(URL_LANDING);
+          copiar.querySelector("[data-texto]").textContent = ok ? "¡Copiado!" : "Error al copiar";
+          copiar.querySelector('[data-icono="copiar"]').classList.toggle("hidden", ok);
+          copiar.querySelector('[data-icono="copiado"]').classList.toggle("hidden", !ok);
+          copiar.classList.toggle("border-esmeralda/60", ok);
+          estado.textContent = ok ? "Link copiado al portapapeles" : "No se pudo copiar el link";
+          clearTimeout(temporizador);
+          temporizador = setTimeout(() => {
+            copiar.querySelector("[data-texto]").textContent = "Copiar link";
+            copiar.querySelector('[data-icono="copiar"]').classList.remove("hidden");
+            copiar.querySelector('[data-icono="copiado"]').classList.add("hidden");
+            copiar.classList.remove("border-esmeralda/60");
+          }, 2000);
+        });
+      })();
+    </script>
   </body>
 </html>
